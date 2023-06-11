@@ -1,12 +1,40 @@
+body {
+    background-color: linen;
+  }
+  
+h1 {
+    color: maroon;
+    margin-left: 40px;
+  }
+
+.navbar {
+    width: 100%;
+}
+
+.btn-primary {
+    margin-right: 20px;
+}
+
+main {
+    display: flex;
+    flex-flow:wrap row;
+}
+  
+#cardItems {
+    padding: 4%;
+}
+
 .rating {
     float:left;
     border:none;
 }
+
 .rating:not(:checked) > input {
     position:absolute;
     top:-9999px;
     clip:rect(0, 0, 0, 0);
 }
+
 .rating:not(:checked) > label {
     float:right;
     width:1em;
@@ -18,21 +46,27 @@
     line-height:1.2;
     color:#ddd;
 }
+
 .rating:not(:checked) > label:before {
     content:'★ ';
 }
+
 .rating > input:checked ~ label {
     color: #f70;
 }
+
 .rating:not(:checked) > label:hover, .rating:not(:checked) > label:hover ~ label {
     color: gold;
 }
+
 .rating > input:checked + label:hover, .rating > input:checked + label:hover ~ label, .rating > input:checked ~ label:hover, .rating > input:checked ~ label:hover ~ label, .rating > label:hover ~ input:checked ~ label {
     color: #ea0;
 }
+
 .rating > label:active {
     position:relative;
 }
+
 .btn:hover {
     background-color: RoyalBlue;
   }
@@ -44,23 +78,6 @@
     font-size: 16px;
     cursor: pointer;
   }
-  
-.navbar {
-    width: 100%;
-}
 
 
 
-.btn-primary {
-    margin-right: 20px;
-}
-feature/wishlist
-
-#cardItems {
-    padding: 4%;
-}
-
-main {
-    display: flex;
-    flex-flow:wrap row;
-}
