@@ -5,3 +5,13 @@
 .btn-primary {
     margin-right: 20px;
 }
+feature/wishlist
+
+#cardItems {
+    padding: 4%;
+}
+
+main {
+    display: flex;
+    flex-flow:wrap row;
+}
