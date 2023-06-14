@@ -1,0 +1,21 @@
+name: Requst Spotify Token
+
+on:
+  schedule:
+  - cron: 0 */1 * * *
+  
+env: 
+  Spotify_Secret: ${{ secrets.SPOTIFY_SECRET }}
+  
+
+jobs:
+  request:
+    runs-on: ubuntu_latest
+    steps:
+      - name: requesting token
+      - run: |
+          curl -X POST "https://accounts.spotify.com/api/token" \
+          -H "Content-Type: application/x-www-form-urlencoded" \
+          -d "grant_type=client_credentials&client_id=$SPOTIFY_CLIENTID&client_secret=$Spotify_Secret" -k
+        shell: bash
+  
