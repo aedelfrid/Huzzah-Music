@@ -7,73 +7,89 @@
   <link rel="stylesheet" type="text/css" href="assets\css\home.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="assets/css/home.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.css" rel="stylesheet"/>
-    <title>BooksCentral</title>
-  </head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.css" rel="stylesheet"/>
+  <title>Huzzah Music!</title>
+  <style>
+    body {
+      background-color: linen;
+    }
+    
+    h1 {
+      color: maroon;
+      margin-left: 40px;
+    }
+  </style>
+</head>
+
 <body>
-   <header> 
+  <header>
     <section class="border p-4 mb-4 d-flex align-items-center flex-column w-100">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a id="home" class="navbar-brand">Good Books Central</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#wishlist">Wishlist</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            </div>
-        </div>
-      </nav>
-    </div>
-        <div class="container my-4">
-        <div class="input-group ps-5">
-          <div id="navbar-search-autocomplete" class="form-outline">
-            <input type="search" id="form1" class="form-control" />
-            <label class="form-label" for="form1">Search</label>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a id="home" class="navbar-brand">Good Central</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#wishlist">Wishlist</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+            </ul>
           </div>
-          <button type="button" class="btn btn-primary">
-            <i class="fas fa-search"></i>
-          </button>
+       </nav>
+      </section>
+        <div class="container my-4">
+          <div class="input-group ps-5">
+            <div id="navbar-search-autocomplete" class="form-outline">
+              <input type="search" id="formSearch" class="form-control" />
+              <label class="form-label" for="formSearch">Search</label>
+            </div>
+              <button type="button" class="searchBtn btn-primary">
+                <i class="fas fa-music" alt="search icon for music" aria-current="general-search"></i>
+              </button>
+          </div>
         </div>
       </div>
-      <div class="advancedSearch mt-3" style="width: 100%;">            
-        <a data-toggle="collapse" href="#queries" role="button" aria-expanded="false"  
-        aria-controls="collapseExample" class="advanced ml-6">
-          Advance Search   <i class="fa fa-angle-down"></i>
-        </a>
-      <div class="collapse" id="queries">
-        <div class="card card-body">
-           <div class="searches ml-7">
-              <div class="col-lg-6">
-                  <input type="text" class="form-control mb-3 ml-6" id="searchTitle" placeholder="by Title">
-              </div> 
-              <div class="col-lg-6">
-                  <input type="text" class="form-control mb-3 ml-6" id="searchAuthor" placeholder="by Author">  
-              </div>
-               <div class="col-lg-6">
-                  <input type="text" class="form-control mb-3 ml-6" id="searchSeries" placeholder="By Series"> 
-              </div>
-              <div class="col-lg-6">
-                <input type="text" class="form-control mb-3 ml-6" id="searchSubject" placeholder="By Subject"> 
-              </div>
-      </div>
-      </section>
+        <div class="advancedSearch mt-3" style="width: 100%">            
+          <a data-toggle="collapse" href="#queries" role="button" aria-expanded="false"  
+          aria-controls="collapseExample" class="advanced ml-6">
+            Advance Search   <i class="fa fa-angle-down mx-2"></i>
+          </a>
+        </div>
+        <section class="collapse" id="queries">
+          <div class="card card-body">
+             <div class="searches ml-7">
+                <div class="col-lg-6">
+                  <input type="text" class="form-control mb-3 ml-6" id="searchTrack" placeholder="by Track">
+                </div> 
+                <div class="col-lg-6">
+                  <input type="text" class="form-control mb-3 ml-6" id="searchArtist" placeholder="by Artist">
+                </div>
+                <div class="col-lg-6">
+                  <input type="text" class="form-control mb-3 ml-6" id="searchAlbum" placeholder="By Album"> 
+                </div>
+                <div class="col-lg-6">
+                  <input type="text" class="form-control mb-3 ml-6" id="searchGenre" placeholder="By Genre"> 
+                </div>
+                <button type="button" class="advSearchBtn btn-secondary" onclick="advancedSearch()">
+                  <i class="fas fa-music mx-3" alt="search icon for music" aria-current="advanced-search"></i>
+                </button>
+             </div>
+        </section>
+
     </header>
+
   <main>
+
     <aside id="filtersContainer">
       <h1>Filters</h1>
       <div class="genres mt-3" id='genreButton' style="width: 100%;">            
@@ -95,7 +111,8 @@
         </div>
       </div>
     </aside>
-    <section id="cardItems">
+
+    <section class="cards justify-content-center" id="cardItems">
       <div class="card" style="width: 95rem;">
         <img class="card-img-top" src="" alt="Card image cap">
         <div class="card-body">
@@ -124,10 +141,11 @@
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <a href="#" class="btn btn-primary">Add to wishlist</a>
       </div>
-  </section>
+    </section>
   </main>
+
   <footer>
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    <div class="pagination is-centered mt-3" role="navigation" aria-label="pagination">
       <a class="pagination-previous">Previous</a>
       <a class="pagination-next">Next page</a>
       <ul class="pagination-list">
@@ -139,12 +157,24 @@
         <li><span class="pagination-ellipsis">&hellip;</span></li>
         <li><a class="pagination-link" aria-label="Goto page 7">7</a></li>
       </ul>
-    </nav>
+    </div>
   </footer>
-  <script type="module" src="./assets/js/auth.js"></script>
-  <script type="module" src="./assets/js/key.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="assets\js\home.js"></script>  
+<script type="module" src="./assets/js/auth.js"></script>
+<script type="module" src="./assets/js/key.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" 
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" 
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" 
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
+        crossorigin="anonymous"></script>
+
 </body>
 </html>

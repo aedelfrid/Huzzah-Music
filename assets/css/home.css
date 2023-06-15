@@ -1,66 +1,17 @@
-.rating {
-    float:left;
-    border:none;
-}
-.rating:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-    clip:rect(0, 0, 0, 0);
-}
-.rating:not(:checked) > label {
-    float:right;
-    width:1em;
-    padding:0 .1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:200%;
-    line-height:1.2;
-    color:#ddd;
-}
-.rating:not(:checked) > label:before {
-    content:'★ ';
-}
-.rating > input:checked ~ label {
-    color: #f70;
-}
-.rating:not(:checked) > label:hover, .rating:not(:checked) > label:hover ~ label {
-    color: gold;
-}
-.rating > input:checked + label:hover, .rating > input:checked + label:hover ~ label, .rating > input:checked ~ label:hover, .rating > input:checked ~ label:hover ~ label, .rating > label:hover ~ input:checked ~ label {
-    color: #ea0;
-}
-.rating > label:active {
-    position:relative;
-}
-.btn:hover {
-    background-color: RoyalBlue;
-  }
-  .btn {
-    background-color: rgb(159, 21, 65);
-    border: none;
-    color: rgb(94, 18, 18);
-    padding: 12px 16px;
-    font-size: 16px;
-    cursor: pointer;
+body {
+    background-color: rgb(202, 175, 147);
   }
   
+.btn me-5 {
+padding-right: 5px;
+}
+
+
 .navbar {
     width: 100%;
 }
 
-
-
-.btn-primary {
-    margin-right: 20px;
-}
-feature/wishlist
-
-#cardItems {
-    padding: 4%;
-}
-
-main {
-    display: flex;
-    flex-flow:wrap row;
-}
+.card-container {
+    position: relative;
+    margin-left: 100px; /* Adjust the margin-left value as needed */
+  }
