@@ -34,8 +34,9 @@ Each generated book item will also be clickable on title, author, or cover image
 From the wishlist page, it will be possible to share a book's information to friends on various social media platforms. (Choose one main platform with which to begin.)
 
 ## Credits
+
 Code developed by Alexander McKinnon (github.com/aedelfrid), Neerajaa Narayanan (github.com/hineeraja), and Benoît DesRoches (github.com/benhwaet).
-Bootstraps and MongoDB frameworks used (and modified to fit) where indicated (don't forget to indicate).
+Bootstrap, Bulma, and MongoDB frameworks used (and modified to fit) where indicated **(don't forget to indicate).
 
 ## License
 
