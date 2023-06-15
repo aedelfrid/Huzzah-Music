@@ -1,5 +1,5 @@
 
-HuzzahMusic-GoodsCentral/0.1 + 'https://aedelfrid.github.io/GoodsCentral/'
+// HuzzahMusic-GoodsCentral/0.1 + 'https://aedelfrid.github.io/GoodsCentral/'
 
 var searchTrack = document.querySelector("#searchTrack").value;
 var searchArtist = document.querySelector("#searchArtist").value;
