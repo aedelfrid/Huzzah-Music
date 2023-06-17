@@ -27,7 +27,10 @@ Then I can see from where the book may be bought or borrowed.
 
 ## Usage
 
+// HuzzahMusic-GoodsCentral/0.1 + 'https://aedelfrid.github.io/GoodsCentral/'
+
 Only the websites' HTML skeleton has been coded. The information provided in the Roadmap below points to the goal usage.
+
 ## Roadmap
 Upon accessing the website application, one must type a search term to find a matching book pulled from Google Books or Amazon Products APIs. Searching for a general term, or using advanced search to search for specific title, author, series, or subject, will populate a javascript produced book list. Books populated in this list are able to be added to a wishlist by clicking the star icon in the corresponding entry. This wishlist will be available on a separate page and reachable through an ever present link in the navbar.
 Each generated book item will also be clickable on title, author, or cover image, to display more detailed information including synopsis, tags, and other meta information. This will also be display information on a separate page, which will also provide the option to add the book to a wishlist by including a toggle-enabled star button.

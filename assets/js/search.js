@@ -27,15 +27,42 @@ async function authorization(data = {}) {
 
 }; //end of authorization function - should now have access to token
 
+//search functionality draft
+// var searchBtn = document.querySelector(".searchBtn");
+
+// searchBtn.addEventListener("click", function() {
+//     var searchInput = document.querySelector("#formSearch");
+//     var searchTerms = searchInput.value;
+// if (searchTerms === '') {
+
+// } else {
+//     searchGet(accessToken);
+//     var searchTerms = searchInput.value;
+    
+//     async function searchGet(data = {}) {
+
+//         var result = await fetch(`https://api.spotify.com/v1/search?q=${searchTerms}&type=track,artist,album`,{
+//             method:'GET',
+//             headers:{ 'Authorization' : `Bearer ${accessToken}`
+//             }});
+
+//         var data = await result.json()
+//         console.log(data);
+        
+// }}
+// });
 
 // advanced search input fields and activation button
+
+var queryForm = document.querySelector("#queries");
+
 var searchTrack = document.querySelector("#searchTrack");
 var searchArtist = document.querySelector("#searchArtist");
 var searchAlbum = document.querySelector("#searchAlbum");
 
 var advSearchBtn = document.querySelector(".advSearchBtn");
 
-
+//when search button is clicked, input text is searched according to type (track, artist, album)
 advSearchBtn.addEventListener("click", function() {
     var trackName = searchTrack.value;
     var artistName = searchArtist.value;
@@ -66,7 +93,6 @@ advSearchBtn.addEventListener("click", function() {
             var trackArtist = data.tracks.items[i].artists[0].name; // track artist name
             var tracksName = data.tracks.items[i].name; //track name
                 
-            var cardInfoInsert = document.querySelector("#cardInfoInsert");
                 
             //link to spotify
             console.log(spotifyTrackLink);
@@ -104,8 +130,8 @@ advSearchBtn.addEventListener("click", function() {
             </div>
         </div>`
             
-            cardInfoInsert.innerHTML = trackCardInfo;
-
+            document.querySelector("#cardInfoInsert").insertAdjacentHTML('beforeend', trackCardInfo); 
+          
             }}};
 
     if (artistName === '') {
@@ -128,8 +154,6 @@ advSearchBtn.addEventListener("click", function() {
                 var spotifyArtistLink = data.artists.items[i].external_urls.spotify;
                 var artistImg = data.artists.items[i].images[0].url;
                 var artistGenres = data.artists.items[i].genres;
-
-                var cardInfoInsert = document.querySelector("#cardInfoInsert");
                 
                 //link to spotify
                 console.log(artistsName);
@@ -166,7 +190,8 @@ advSearchBtn.addEventListener("click", function() {
                 </div>
             </div>`
                 
-                cardInfoInsert.innerHTML = artistCardInfo;       
+            document.querySelector("#cardInfoInsert").insertAdjacentHTML('beforeend', artistCardInfo);
+                   
 }}};
 
     if (albumName === '') {
@@ -191,9 +216,6 @@ advSearchBtn.addEventListener("click", function() {
                     var albumsName = data.albums.items[i].name; ;//name of album
                     var albumImg = data.albums.items[i].images[0].url; //album image
                     var albumArtist = data.albums.items[i].artists[0].name; // track artist name
-                   
-                        
-                    var cardInfoInsert = document.querySelector("#cardInfoInsert");
                         
                     //link to spotify
                     console.log(spotifyAlbumLink);
@@ -230,15 +252,27 @@ advSearchBtn.addEventListener("click", function() {
                     </div>
                 </div>`
                     
-                    cardInfoInsert.innerHTML = albumCardInfo;
-        
+                document.querySelector("#cardInfoInsert").insertAdjacentHTML('beforeend', albumCardInfo);
+                
+            
             };
 
      }};
 
-});
+//      var saveBtn = document.querySelector(".saveBtn");
+
+//      saveBtn.addEventListener("click", function(event) {
+//          event.preventDefault();
+         
+//        localStorage.setItem("trackCard", JSON.stringify(this.trackCardInfo));
+//        localStorage.setItem("artistCard", JSON.stringify(this.rtistCardInfo));
+//        localStorage.setItem("albumCard", JSON.stringify(this.albumCardInfo));
+//      });
+ });
+
 
 
 (function callEveryHour() {
     setInterval(authorization(), 1000 * 60 * 60);
 }());
+
