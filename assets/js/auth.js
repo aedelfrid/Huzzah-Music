@@ -1,6 +1,8 @@
 var accessToken;
+
 import {spotifyClientID} from './key.js'
 import {spotifySecret} from './key.js'
+import {accessToken} from './auth.js';
 
 var searchResults;
 
@@ -12,7 +14,7 @@ var offset = resultLimit*pageNum;
 
 
 async function authorization(data = {}) {
-    const result = await fetch('https://accounts.spotify.com/api/token',{
+    data = await fetch('https://accounts.spotify.com/api/token',{
         method:'POST',
         headers:{ 
             'Content-Type' : 'application/x-www-form-urlencoded',
@@ -20,29 +22,18 @@ async function authorization(data = {}) {
     },
     body: 'grant_type=client_credentials'
 });
-    
-    var data = await result.json();
-    accessToken = data.access_token;
-    console.log(accessToken);
 
-    categoryGet(accessToken);
+        var tokenObj = await data.json()
+        var accessToken = tokenObj.access_token;
+        console.log(accessToken);
+        return accessToken;
 };
-async function categoryGet(accessToken, data = {}) {
-    const result = await fetch(`https://api.spotify.com/v1/search?q=${searchQuery}&type=track&limit=${resultLimit}&offset=${offset}`,{
-        method:'GET',
-        headers:{ 'Authorization' : `Bearer ${accessToken}`
-    }});
-    
-    var data = await result.json()
-    
-    searchResults = data.tracks.items
-    console.log(searchResults)
+var accessToken = authorization();
 
-    for (var i=0;i<searchResults.length;i++) {
-        console.log(searchResults[i].name)
-    }
-};
 
 (function callEveryHour() {
     setInterval(authorization(), 1000 * 60 * 60);
-}());
+}())
+
+export {accessToken};
+

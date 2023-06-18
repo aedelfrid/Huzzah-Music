@@ -1,7 +1,7 @@
 var accessToken;
 import {spotifyClientID} from './key.js';
 import {spotifySecret} from './key.js';
-
+import {accessToken} from './auth.js';
 var searchResults;
 
 var pageNum = 0;
@@ -258,21 +258,21 @@ advSearchBtn.addEventListener("click", function() {
 
      }};
 
-//      var saveBtn = document.querySelector(".saveBtn");
+     var saveBtn = document.querySelector(".saveBtn");
 
-//      saveBtn.addEventListener("click", function(event) {
-//          event.preventDefault();
+     saveBtn.addEventListener("click", function(event) {
+         event.preventDefault();
          
-//        localStorage.setItem("trackCard", JSON.stringify(this.trackCardInfo));
-//        localStorage.setItem("artistCard", JSON.stringify(this.artistCardInfo));
-//        localStorage.setItem("albumCard", JSON.stringify(this.albumCardInfo));
-//      });
+       event.parent.localStorage.setItem("trackCard", JSON.stringify(this.trackCardInfo));
+       event.parent.localStorage.setItem("artistCard", JSON.stringify(this.artistCardInfo));
+       event.parent.ocalStorage.setItem("albumCard", JSON.stringify(this.albumCardInfo));
+     });
 
-//  });
+ });
 
 
 
 (function callEveryHour() {
     setInterval(authorization(), 1000 * 60 * 60);
 }());
-});
+
