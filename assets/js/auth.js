@@ -21,28 +21,14 @@ async function authorization(data = {}) {
     body: 'grant_type=client_credentials'
 });
     
-    var data = await result.json();
-    accessToken = data.access_token;
+    var tokenObj = await result.json();
+    accessToken = tokenObj.access_token;
 
-    categoryGet(accessToken);
-};
-
-async function categoryGet(accessToken, data = {}) {
-    const result = await fetch(`https://api.spotify.com/v1/search?q=${searchQuery}&type=track&limit=${resultLimit}&offset=${offset}`,{
-        method:'GET',
-        headers:{ 'Authorization' : `Bearer ${accessToken}`
-    }});
-    
-    var data = await result.json()
-    
-    searchResults = data.tracks.items
-    console.log(searchResults)
-
-    for (var i=0;i<searchResults.length;i++) {
-        console.log(searchResults[i].name)
-    }
 };
 
 (function callEveryHour() {
     setInterval(authorization(), 1000 * 60 * 60);
-}());
+}())
+
+export {accessToken};
+
