@@ -1,6 +1,10 @@
 var categories;
 
-import {accessToken} from './auth.js'; 
+import {accessToken} from './auth.js';
+
+var token = await accessToken
+
+console.log(token)
 
 
 var searchResults;
@@ -11,15 +15,17 @@ var searchResults;
 //var resultLimit = '50';
 //var offset = resultLimit*pageNum;
 
-async function categoryGet() {
+async function categoryGet(data={}) {
     var result = await fetch('https://api.spotify.com/v1/browse/categories', {
         method:'GET',
-        headers:{ 'Authorization' : `Bearer ${accessToken}`}
+        headers:{ 'Authorization' : `Bearer ${token}`}
     });
- var data = await result.json()
- var categoryObj = data.items
-    return categoryObj
+    var data = await result.json()
+    var categoryObj = data.items
+        return categoryObj
 };
+
+categoryGet()
 
 /*async function searchTracks(accessToken, data = {}) {
     const result = await fetch(`https://api.spotify.com/v1/search?q=${searchQuery}&type=track&limit=${resultLimit}&offset=${offset}`,{
