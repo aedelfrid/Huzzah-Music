@@ -1,7 +1,6 @@
 var accessToken;
-import {spotifyClientID} from './key.js'
-import {spotifySecret} from './key.js'
-
+import {spotifyClientID} from './key.js';
+import {spotifySecret} from './key.js';
 
 var searchResults;
 
@@ -265,14 +264,15 @@ advSearchBtn.addEventListener("click", function() {
 //          event.preventDefault();
          
 //        localStorage.setItem("trackCard", JSON.stringify(this.trackCardInfo));
-//        localStorage.setItem("artistCard", JSON.stringify(this.rtistCardInfo));
+//        localStorage.setItem("artistCard", JSON.stringify(this.artistCardInfo));
 //        localStorage.setItem("albumCard", JSON.stringify(this.albumCardInfo));
 //      });
- });
+
+//  });
 
 
 
 (function callEveryHour() {
     setInterval(authorization(), 1000 * 60 * 60);
 }());
-
+});

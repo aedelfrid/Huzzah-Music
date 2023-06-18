@@ -2,7 +2,6 @@ var accessToken;
 import {spotifyClientID} from './key.js'
 import {spotifySecret} from './key.js'
 
-
 var searchResults;
 
 var pageNum = 0;
@@ -24,10 +23,10 @@ async function authorization(data = {}) {
     
     var data = await result.json();
     accessToken = data.access_token;
+    console.log(accessToken);
 
     categoryGet(accessToken);
 };
-
 async function categoryGet(accessToken, data = {}) {
     const result = await fetch(`https://api.spotify.com/v1/search?q=${searchQuery}&type=track&limit=${resultLimit}&offset=${offset}`,{
         method:'GET',

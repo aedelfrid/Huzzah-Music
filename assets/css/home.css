@@ -1,7 +1,12 @@
 body {
     background-color: rgb(202, 175, 147);
   }
-  
+
+  #home {
+    color: maroon;
+    margin-left: 40px;
+  }
+
 .btn me-5 {
 padding-right: 5px;
 }
@@ -11,7 +16,17 @@ padding-right: 5px;
     width: 100%;
 }
 
+.advancedSearch {
+  margin-left: 25%;
+  width: 50%;
+}
+
+.advSearchBtn {
+  margin-left: 25%;
+}
+
 .card-container {
     position: relative;
     margin-left: 100px; /* Adjust the margin-left value as needed */
   }
+
