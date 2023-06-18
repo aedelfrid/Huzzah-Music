@@ -1,31 +1,6 @@
-var accessToken;
-import {spotifyClientID} from './key.js';
-import {spotifySecret} from './key.js';
+// var accessToken;
 import {accessToken} from './auth.js';
-var searchResults;
-
-var pageNum = 0;
-var searchQuery = document.querySelector("#formSearch")
-//var types = 'track' + '%2c' + 'artist' ;
-var resultLimit = '50';
-var offset = resultLimit*pageNum;
-
-
-async function authorization(data = {}) {
-    const result = await fetch('https://accounts.spotify.com/api/token',{
-        method:'POST',
-        headers:{ 
-            'Content-Type' : 'application/x-www-form-urlencoded',
-            'Authorization' : 'Basic ' + btoa(spotifyClientID + ':' + spotifySecret),
-    },
-    body: 'grant_type=client_credentials'
-});
-    
-    var data = await result.json();
-    accessToken = data.access_token;
-
-}; //end of authorization function - should now have access to token
-
+var access_Token = await accessToken;
 //search functionality draft
 // var searchBtn = document.querySelector(".searchBtn");
 
@@ -52,33 +27,29 @@ async function authorization(data = {}) {
 // });
 
 // advanced search input fields and activation button
-
-var queryForm = document.querySelector("#queries");
-
 var searchTrack = document.querySelector("#searchTrack");
 var searchArtist = document.querySelector("#searchArtist");
 var searchAlbum = document.querySelector("#searchAlbum");
 
-var advSearchBtn = document.querySelector(".advSearchBtn");
+var searchTrackBtn = document.querySelector("#searchTrackBtn");
+var searchArtistBtn = document.querySelector("#searchArtistBtn");
+var searchAlbumBtn = document.querySelector("#searchAlbumBtn");
 
 //when search button is clicked, input text is searched according to type (track, artist, album)
-advSearchBtn.addEventListener("click", function() {
+searchTrackBtn.addEventListener("click", function() {
     var trackName = searchTrack.value;
-    var artistName = searchArtist.value;
-    var albumName = searchAlbum.value;
 
     if (trackName === '') {
 
     } else {
-
-        trackGet(accessToken);
+        trackGet(access_Token);
         var trackName = searchTrack.value;
 
         async function trackGet(data = {}) {
 
         var result = await fetch(`https://api.spotify.com/v1/search?q=${trackName}&type=track`,{
             method:'GET',
-            headers:{ 'Authorization' : `Bearer ${accessToken}`
+            headers:{ 'Authorization' : `Bearer ${access_Token}`
             }});
 
         var data = await result.json()
@@ -91,8 +62,7 @@ advSearchBtn.addEventListener("click", function() {
             var trackImg = data.tracks.items[i].album.images[0].url; //album image
             var trackArtist = data.tracks.items[i].artists[0].name; // track artist name
             var tracksName = data.tracks.items[i].name; //track name
-                
-                
+                    
             //link to spotify
             console.log(spotifyTrackLink);
            // name of album
@@ -132,17 +102,21 @@ advSearchBtn.addEventListener("click", function() {
             document.querySelector("#cardInfoInsert").insertAdjacentHTML('beforeend', trackCardInfo); 
           
             }}};
+        });
+
+ searchArtistBtn.addEventListener("click", function(){
+    var artistName = searchArtist.value;
 
     if (artistName === '') {
 
     } else {
 
-        artistGet(accessToken);
+        artistGet(access_Token);
         var artistName = searchArtist.value;
         async function artistGet(data = {}) {
             var result = await fetch(`https://api.spotify.com/v1/search?q=${artistName}&type=artist`,{
                 method:'GET',
-                headers:{ 'Authorization' : `Bearer ${accessToken}`
+                headers:{ 'Authorization' : `Bearer ${access_Token}`
                 }});
     
         var data = await result.json()
@@ -192,18 +166,22 @@ advSearchBtn.addEventListener("click", function() {
             document.querySelector("#cardInfoInsert").insertAdjacentHTML('beforeend', artistCardInfo);
                    
 }}};
+});
 
+searchAlbumBtn.addEventListener("click", function() {
+    var albumName = searchAlbum.value;
+    
     if (albumName === '') {
 
     } else {
 
-        albumGet(accessToken);
+        albumGet(access_Token);
         var albumName = searchAlbum.value;
 
         async function albumGet(data = {}) {
             var result = await fetch(`https://api.spotify.com/v1/search?q=${albumName}&type=album`,{
                 method:'GET',
-                headers:{ 'Authorization' : `Bearer ${accessToken}`
+                headers:{ 'Authorization' : `Bearer ${access_Token}`
                 }});
             
                 var data = await result.json()
@@ -252,13 +230,12 @@ advSearchBtn.addEventListener("click", function() {
                 </div>`
                     
                 document.querySelector("#cardInfoInsert").insertAdjacentHTML('beforeend', albumCardInfo);
-                
-            
-            };
+            }}};
+ });
 
-     }};
 
-     var saveBtn = document.querySelector(".saveBtn");
+//To save selected track, artist, or album cards to a wishlist through local storage.
+var saveBtn = document.querySelector(".saveBtn");
 
      saveBtn.addEventListener("click", function(event) {
          event.preventDefault();
@@ -267,12 +244,3 @@ advSearchBtn.addEventListener("click", function() {
        event.parent.localStorage.setItem("artistCard", JSON.stringify(this.artistCardInfo));
        event.parent.ocalStorage.setItem("albumCard", JSON.stringify(this.albumCardInfo));
      });
-
- });
-
-
-
-(function callEveryHour() {
-    setInterval(authorization(), 1000 * 60 * 60);
-}());
-

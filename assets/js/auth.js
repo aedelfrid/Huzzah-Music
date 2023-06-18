@@ -2,7 +2,6 @@ var accessToken;
 
 import {spotifyClientID} from './key.js'
 import {spotifySecret} from './key.js'
-import {accessToken} from './auth.js';
 
 var searchResults;
 
@@ -33,7 +32,7 @@ var accessToken = authorization();
 
 (function callEveryHour() {
     setInterval(authorization(), 1000 * 60 * 60);
-}())
+});
 
 export {accessToken};
 
