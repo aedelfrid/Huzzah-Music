@@ -3,7 +3,7 @@ body {
   }
 
   #home {
-    color: maroon;
+    color: rgb(128, 0, 109);
     margin-left: 40px;
   }
 
@@ -16,9 +16,9 @@ padding-right: 5px;
     width: 100%;
 }
 
-.advSearch {
+/* .advSearch {
   
-}
+} */
 .advancedSearch {
   margin-left: 25%;
   width: 50%;
