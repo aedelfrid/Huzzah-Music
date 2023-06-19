@@ -31,28 +31,43 @@ Then I can see from where the album may be bought or played.
 //Deployed application website '<https://aedelfrid.github.io/Huzzah-Music/>'
 //Application GitHub repository '<https://github.com/aedelfrid/Huzzah-Music>'
 
-Upon accessing the website application, one must type a search term to find matching music items pulled from Spotify API and/or Discogs API. Searching for a general term, or using advanced search to search for specific tracks, artists, albums, or genres, will populate a javascript produced music list.
+Upon accessing the website application, the user can search in the general search box, which will look up tracks, artists, albums, and playlists. One can also use the Advanced Search drop-down to search specifically for a track, an artist, OR an album. The page also contains a (so far) non-functional filter, that would allow for a genre search.
 
-Music items populated in this list are then able to be added to a wishlist by clicking the heart icon in the corresponding entry. This wishlist will be available on a separate page and reachable through an ever present link in the navbar.
+The search then uses Spotify's API to generate cards holding information about the music item searched. 
+Both the general and advanced searches will then dynamically generate HTML content through Javascript on which the fetched info will be displayed.
 
-Each generated music item will also have a clickable button below the track title, artist name, album name, and/or genre types, leading one to the Spotify page containing more information about the item.
+Each music item displayed will provide a link to the relevant Spotify page where the user can listen to the track, artist, album, or playlist chosen.
+
+Ideally, music items populated in this list will be saved by clicking the heart icon in the corresponding entry, the saved data should then be displayed on the wishlist page in the same form. This wishlist will be available on a separate page and reachable through an ever-present link in the navbar.
+
+Here are screenshots of the current state:
+Basic View:
+![Alt text](assets/images/Screenshots/ScreenshotBasic.png)
+SearchTrack:
+![Alt text](assets/images/Screenshots/ScreenshotSearchTrack.png)
+Search Album:
+![Alt text](assets/images/Screenshots/ScreenshotSearchAlbum.png)
+Go to Spotify:
+![Alt text](assets/images/Screenshots/ScreenshotGoSpotify.png)
+Save as favorite:
+![Alt text](assets/images/Screenshots/ScreenshotFavourite.png)
 
 ## Roadmap
 
-These following items are future goals in the development of this app:
-
-The ability to save items to local storage and to display them on a wishlist page is not complete. Ideally, there would be a dropdown menu or accessible modal to display the wishlist/favourites list according to all search types: tracks, artists, albums, genres. In addition, it could also be possible to create playlists on Huzzah Music that could be played on Spotify.
-
-The Discogs API has not been implemented, but would permit the user to find musical items available on the marketplace. The possibility of adding YouTube API to complement Spotify exists, though their terms and conditions may prohibit this.
+These following items are unimplemented ideas, as such, they are future goals in the development of this app:
 
 We are still working on a Filter function narrowing down the results by genre, using a dropdown menu to choose the genre/category.
 
-From the wishlist page, it will be possible to share music information to friends on various social media platforms. (Choose one main platform with which to begin.)
+The ability to save items to local storage and to display them on a wishlist page is not complete. Ideally, there would be a dropdown menu or accessible modals to display the wishlist/favourites list according to all search types: tracks, artists, albums, genres. In addition, it could also be possible to create playlists on Huzzah Music that could be played on or through Spotify.
+
+The Discogs API has not been implemented, but would permit the user to find musical items available on the marketplace. The possibility of adding YouTube API to complement Spotify exists, though their terms and conditions may prohibit this.
+
+From the wishlist page, it should be possible to share music information to friends on various social media platforms. (Choose one main platform with which to begin.)
 
 ## Credits
 
-Code developed by Alexander McKinnon (github.com/aedelfrid), Neerajaa Narayanan (github.com/hineeraja), and Benoît DesRoches (github.com/benhwaet).
-Bootstrap, Bulma, and MongoDB frameworks used (and modified to fit).
+Code developed (in alphabetical order) by Alexander McKinnon (github.com/aedelfrid), Benoît DesRoches (github.com/benhwaet), and Neerajaa Narayanan (github.com/hineeraja).
+Bootstrap, Bulma, MongoDB, and Popperframeworks used (and modified to fit).
 
 ## License
 

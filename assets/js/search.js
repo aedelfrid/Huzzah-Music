@@ -92,19 +92,20 @@ searchTrackBtn.addEventListener("click", function () {
                 <button class="saveBtn btn"><i class="fa fa-heart fa"></i></button>
                 <div class="row g-0">
                     <div class="col-md-4">
-                    <img id="trackImage" src=${trackItems.trackImg} class="img" alt="album image provided for track">
+                    <img src=${trackItems.trackImg} class="img trackImage" alt="album image provided for track">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                     <h5 id="tracksName" class="card-title">${trackItems.tracksName}</h5>
+                                     <h5 class="tracksName card-title">${trackItems.tracksName}</h5>
                                 </div>
                              </div>
                             <p class="card-text">from ${trackItems.trackAlbumName} by ${trackItems.trackArtist}</p>
-                            <div id="spotifyLink">
-                                <button class="linkBtn btn"><a href="${trackItems.spotifyTrackLink}">Check out on Spotify</a></button>
-                                <img id="spotifyLogo" src="assets/images/spotify-icons-logos/icons/01_RGB/02_PNG/Spotify_Icon_RGB_Black.png" alt="SpotifyLogo">
+                            <div class="spotifyLink">
+                                <button class="linkBtn btn"><a href="${trackItems.spotifyTrackLink}">Check out on Spotify
+                                <img class="logo" src="assets/images/spotify-icons-logos/icons/01_RGB/02_PNG/Spotify_Icon_RGB_White.png" 
+                                alt="SpotifyLogo"></a></button>
                             </div>
                         </div>
                     </div>
@@ -119,21 +120,12 @@ searchTrackBtn.addEventListener("click", function () {
 
             };
             function localStorage(event) {
-                console.log(event.target)
+                console.log(event.target.parentElement) //logs the entire element, but does not save
 
-            }
-
-
-            // var saveBtn = document.querySelector(".saveBtn");
-
-            // saveBtn.addEventListener("click", function (event) {
-            //     console.log(this)
-
-            ;
+                event.target.parentElement.localStorage.setItem("CardInfo", trackCardInfo)
+            };
         }
     };
-
-
 
 });
 
@@ -166,10 +158,10 @@ searchArtistBtn.addEventListener("click", function () {
 
             for (var i = 0; i < data.artists.items.length; i++) {
                 var artistItems = {
-                artistsName: data.artists.items[i].name,
-                spotifyArtistLink: data.artists.items[i].external_urls.spotify,
-                artistImg: data.artists.items[i].images[0].url,
-                artistGenres: data.artists.items[i].genres
+                    artistsName: data.artists.items[i].name,
+                    spotifyArtistLink: data.artists.items[i].external_urls.spotify,
+                    artistImg: data.artists.items[i].images[0].url,
+                    artistGenres: data.artists.items[i].genres
                 };
 
                 //link to spotify
@@ -183,23 +175,24 @@ searchArtistBtn.addEventListener("click", function () {
 
 
                 var artistCardInfo =
-                `<div class="card-info card ml-5 m-4">
+                    `<div class="card-info card ml-5 m-4">
                 <button class="saveBtn btn"><i class="fa fa-heart fa"></i></button>
                 <div class="row g-0">
                     <div class="col-md-4">
-                    <img id="artistImage" src=${artistItems.artistImg} class="img" alt="image provided for artist">
+                    <img src=${artistItems.artistImg} class="img artistImage" alt="image provided for artist">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                     <h5 id="artistName" class="card-title">${artistItems.artistsName}</h5>
+                                     <h5 class="card-title artistName">${artistItems.artistsName}</h5>
                                 </div>
                              </div>
                             <p class="card-text">Associated genres: ${artistItems.artistGenres}</p>
                             <div id="spotifyLink">
-                                <button class="linkBtn btn"><a href="${artistItems.spotifyArtistLink}">Check out on Spotify</a></button>
-                                <img id="spotifyLogo" src="assets/images/spotify-icons-logos/icons/01_RGB/02_PNG/Spotify_Icon_RGB_Black.png" alt="SpotifyLogo">
+                                <button class="linkBtn btn"><a href="${artistItems.spotifyArtistLink}">Check out on Spotify
+                                <img class="logo" src="assets/images/spotify-icons-logos/icons/01_RGB/02_PNG/Spotify_Icon_RGB_White.png" 
+                                alt="SpotifyLogo"></a></button>
                             </div>
                         </div>
                     </div>
@@ -244,30 +237,31 @@ searchAlbumBtn.addEventListener("click", function () {
 
             for (var i = 0; i < data.albums.items.length; i++) {
                 var albumItems = {
-                spotifyAlbumLink: data.albums.items[i].external_urls.spotify, //link to spotify
-                albumsName: data.albums.items[i].name,//name of album
-                albumImg: data.albums.items[i].images[0].url, //album image
-                albumArtist: data.albums.items[i].artists[0].name, // track artist name
-                albumRelease: data.albums.items[i].release_date,
+                    spotifyAlbumLink: data.albums.items[i].external_urls.spotify, //link to spotify
+                    albumsName: data.albums.items[i].name,//name of album
+                    albumImg: data.albums.items[i].images[0].url, //album image
+                    albumArtist: data.albums.items[i].artists[0].name, // track artist name
+                    albumRelease: data.albums.items[i].release_date,
                 };
-                //link to spotify
-                console.log(albumItems.spotifyAlbumLink);
-                //name of album
-                console.log(albumItems.albumsName);
-                //album image
-                console.log(albumItems.albumImg);
-                //album Artist
-                console.log(albumItems.albumArtist);
-                //album release date
-                console.log(albumItems.albumRelease);
+
+                // //link to spotify
+                // console.log(albumItems.spotifyAlbumLink);
+                // //name of album
+                // console.log(albumItems.albumsName);
+                // //album image
+                // console.log(albumItems.albumImg);
+                // //album Artist
+                // console.log(albumItems.albumArtist);
+                // //album release date
+                // console.log(albumItems.albumRelease);
 
 
                 var albumCardInfo =
-                `<div class="card-info card ml-5 m-4">
+                    `<div class="card-info card ml-5 m-4">
                 <button class="saveBtn btn"><i class="fa fa-heart fa"></i></button>
                 <div class="row g-0">
                     <div class="col-md-4">
-                    <img id="albumImage" src=${albumItems.albumImg} class="img" alt="image provided for album">
+                    <img src=${albumItems.albumImg} class="img albumImage" alt="image provided for album">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -277,9 +271,10 @@ searchAlbumBtn.addEventListener("click", function () {
                                 </div>
                              </div>
                             <p class="card-text">by ${albumItems.albumArtist}, released ${albumItems.albumRelease}</p>
-                            <div id="spotifyLink">
-                                <button class="linkBtn btn"><a href="${albumItems.spotifyAlbumLink}">Check out on Spotify</a></button>
-                                <img id="spotifyLogo" src="assets/images/spotify-icons-logos/icons/01_RGB/02_PNG/Spotify_Icon_RGB_Black.png" alt="SpotifyLogo">
+                            <div class="spotifyLink">
+                                <button class="linkBtn btn"><a href="${albumItems.spotifyAlbumLink}">Check out on Spotify
+                                <img class="logo" src="assets/images/spotify-icons-logos/icons/01_RGB/02_PNG/Spotify_Icon_RGB_White.png" 
+                                alt="SpotifyLogo"></a></button>
                             </div>
                         </div>
                     </div>
