@@ -1,59 +1,34 @@
 body {
-    background-color: rgb(202, 175, 147);
-  }
+  background-color: #ffc23d;
+}
 
-  #home {
-    color: maroon;
-    margin-left: 40px;
-  }
+#home {
+  color: #fff4b8;
+  margin-left: 40px;
+}
+.nav-link:hover {
+  color: #fff4b8;
+  font-weight: bolder;
+}
+.navbar {
+ background-color:#f24600;
+ color:#fff4b8;
+ border-radius: 40px;
+}
 
 .btn me-5 {
-padding-right: 5px;
+  padding: 10px;
+  max-height: 10px;
+  border-radius: 40px;
 }
-
 
 .navbar {
-    width: 100%;
+  width: 100%;
 }
 
-.advSearch {
-  
-}
-.advancedSearch {
-  margin-left: 25%;
-  width: 50%;
-}
-
-.advSearchBtn {
-  margin-left: 25%;
-}
-
-.form-control {
-  width: 50%;
-  margin-right: 100px;
-}
-.card-container {
-    position: relative;
-    margin-left: 100px; /* Adjust the margin-left value as needed */
-  }
-
-
-.searchBtn {
-  box-shadow: 0 7px 14px 0 rgba(rgb(170, 75, 170), rgb(239, 93, 203), rgb(118, 106, 196)), 0 9px 18px 0 rgba(rgb(170, 75, 170), rgb(239, 93, 203), rgb(118, 106, 196));
-}
-
-.searchBtn:hover {
-  box-shadow: 0 7px 14px 0 rgba(rgb(235, 191, 235), rgb(237, 178, 222), rgb(165, 154, 235)), 0 9px 18px 0 rgba(rgb(235, 191, 235), rgb(237, 178, 222), rgb(165, 154, 235));
-  background-color: blueviolet;
-}
-
-=======
-  
- 
 section {
-  background-color: rgb(225, 204, 80);
+  background-color: #fff4b8;
   padding: 10px;
-  border: 1px solid gray;
   margin-bottom: 20px;
 }
 
@@ -62,8 +37,22 @@ section {
   font-weight: bold;
 }
 
+.advancedSearch {
+  margin-left: 25%;
+  width: 50%;
+}
 
-a {
+.searchBtn {
+  height: 40px;
+  border-radius: 40px;
+  background-color: #ff923e;
+}
+
+.searchBtn:hover {
+  background-color: #671414;
+}
+
+.nav-link {
   color: rgb(25, 6, 42);
 }
 
@@ -73,12 +62,12 @@ a {
 
 .advanced {
   display: inline-block;
-  color: rgb(56, 91, 80);
+  color: #671414;
   font-weight: bold;
 }
 
 .advanced:hover {
-  color: rgb(62, 24, 160);
+  color: #fff4b8;
 }
 
 .searches {
@@ -89,11 +78,40 @@ a {
   width: 100%;
   margin-bottom: 1rem;
 }
+/* generated card styling */
 
-.advSearchBtn {
-  background-color: #26162b;
-  
+.card-info {
+  max-width: 800px;
+  max-height: 300px;
+  background-color: #f24600; 
+  color: #ffc23d;
+  border-radius: 20px;
 }
+
+.trackImage,
+.artistImage,
+.albumImage {
+  margin: 10px;
+  height: 175px;
+}
+
+.linkBtn {
+  background-color: #000000; 
+  color: white;
+  font-size: smaller;
+}
+
+.linkBtn a {
+  color: #fff4b8;
+  font-weight: bolder;
+  font-style: italic;
+}
+
+.logo {
+  height: 50px;
+  padding: 5px;
+}
+
 /* Footer pagination styling */
 .pagination {
   text-align: center;
@@ -101,14 +119,38 @@ a {
 
 .pagination-previous,
 .pagination-next {
-  color: #333;
+  color: #ff923e;
   text-decoration: none;
   margin: 0 5px;
 }
-
-.pagination-link {
+#next, #previous {
+  background-color: #fff4b8;
   color: #671414;
-  text-decoration: none;
- 
 }
 
+#next:hover, #previous:hover {
+  background-color: #671414;
+  color: #fff4b8;
+}
+.pagination-link {
+  background-color: #f24600;
+  color: #ff923e;
+  text-decoration: none;
+}
+
+
+h6 {
+  font-style: italic;
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+#spotifyLogo {
+  height: 70px; 
+  background-color: #1DB954; 
+  padding: 5px;
+}
+
+.attributionSpotify {
+  margin-left: 35%;
+}
