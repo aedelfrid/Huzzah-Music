@@ -1,25 +1,11 @@
-const clientId = 'd01ca5196e4a44a7b2baa7c1da7d98c2';
-const clientSecret = 'e6b876c5e98c4f97b6ade347035aaddb';
 
-// private methods
-const _getToken = async () => {
+import { accessToken } from "./auth.js";
 
-    const result = await fetch('https://accounts.spotify.com/api/token', {
-        method: 'POST',
-        headers: {
-            'Content-Type' : 'application/x-www-form-urlencoded', 
-            'Authorization' : 'Basic ' + btoa( clientId + ':' + clientSecret)
-        },
-        body: 'grant_type=client_credentials'
-    });
-
-    const data = await result.json();
-    console.log("token_outside-search",data,data.access_token)
-    return data.access_token;
-}
 const _search = async (input) => {
-let token= await _getToken()
-console.log(token)
+
+  let token = await accessToken;
+
+  console.log(token)
     const result = await fetch(`https://api.spotify.com/v1/search?q=${input}&type=album%2Cplaylist%2Cartist%2Ctrack`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + token}

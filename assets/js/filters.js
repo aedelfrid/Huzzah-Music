@@ -1,14 +1,14 @@
 var categories;
 
-import {accessToken} from './auth.js';
+import { accessToken } from './auth.js';
 
 var token = await accessToken;
 console.log(token);
 
-async function categoryGet(data={}) {
+async function categoryGet(data = {}) {
     var result = await fetch('https://api.spotify.com/v1/browse/categories', {
-        method:'GET',
-        headers:{ 'Authorization' : `Bearer ${token}`}
+        method: 'GET',
+        headers: { 'Authorization': `Bearer ${token}` }
     });
     var data = await result.json()
 
@@ -50,16 +50,16 @@ $('#categoryA').on('click', () => {
         categoryCollapseContent.removeChild(categoryCollapseContent.firstChild);
     }
 
-    
-    for (var i=0;i<categoryItemsObj.length; i++) {
+
+    for (var i = 0; i < categoryItemsObj.length; i++) {
         var categoryName = categoryItemsObj[i].name
-        var categorySelect = 
-        (`<div class="card card-body" id='filterCard${i}'>
+        var categorySelect =
+            (`<div class="card card-body" id='filterCard${i}'>
             <div class="filterBox ml-7"> 
                 <div class="form-check"> <input id='checkBox' class="form-check-input" type="checkbox" value="${categoryName}" id="flexCheckDefault"> <label class="form-check-label" for="flexCheckDefault"> ${categoryName} </label> </div
             </div>
         </div>`)
-        categoryCollapseContent.insertAdjacentHTML('beforeend',categorySelect)
+        categoryCollapseContent.insertAdjacentHTML('beforeend', categorySelect)
 
         $(`#filterCard${i}`).on('click', (e) => {
             console.log(e)
