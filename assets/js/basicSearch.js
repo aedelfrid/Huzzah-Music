@@ -142,11 +142,11 @@ document.addEventListener("DOMContentLoaded", function () {
         title.style.fontWeight = "bold"; // Set font weight
         cardBodyCol.appendChild(title);
                         
-        var starIcon = document.createElement("i");
-        starIcon.className = "fa fa-star";
-        starIcon.style.color = "white";
-        starIcon.style.float = "right"; // Align to the right
-        title.appendChild(starIcon);
+        var heartIcon = document.createElement("i");
+        heartIcon.className = "fa fa-heart";
+        heartIcon.style.color = "white";
+        heartIcon.style.float = "right"; // Align to the right
+        title.appendChild(heartIcon);
         
         var button = document.createElement("button");
         button.textContent = "Play";
