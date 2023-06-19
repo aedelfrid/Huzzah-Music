@@ -22,6 +22,7 @@
 <body>
   <header>
     <section class="border p-4 mb-4 d-flex align-items-center flex-column w-100">
+
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a id="home" class="navbar-brand">Huzzah Music!</a>
@@ -99,27 +100,46 @@
     <aside id="filtersContainer">
       <h1>Filters</h1>
       <div class="category mt-3" id='categoryButton' style="width: 100%;">            
-        <a data-toggle="collapse" href="#categoryCollapse" role="button" aria-expanded="false"  
+
+        <a data-toggle="collapse" id="categoryA" href="#categoryCollapse" role="button" aria-expanded="false"  
         aria-controls="categoryCollapse" class="advanced ml-6">
           Categories   <i class="fa fa-angle-down"></i>
         </a>
-        <div class="categoryCollapse" id="genreCollapse">
-          <div class="card card-body">
-            <div class="filterBox ml-7"> 
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Default checkbox
-                </label>
-              </div>
-            </div>
-          </div>
+        <div class="categoryCollapse" id="categoryCollapse">
+
         </div>
       </div>
     </aside>
 
-    <section id="cardInfoInsert">
-    
+    <section id="cardInfoInsert" class="cards justify-content-center" id="cardItems">
+      <!--<div class="card" style="width: 95rem;">
+        <img class="card-img-top" src="" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Add to wishlist</a>
+      </div>
+      <div class="card" style="width: 95rem;">
+        <img class="card-img-top" src="" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Add to wishlist</a>
+      </div>
+      <div class="card" style="width: 95rem;">
+        <img class="card-img-top" src="" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Add to wishlist</a>
+      </div>
+      <div class="card" style="width: 95rem;">
+        <img class="card-img-top" src="" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Add to wishlist</a>
+      </div>-->
     </section>
   </main>
 
@@ -139,11 +159,13 @@
     </div>
   </footer>
 
+
   <script type="module" src="./assets/js/key.js"></script>
   <script type="module" src="./assets/js/auth.js"></script>
   <script type="module" src="./assets/js/search.js"></script>
   <script type="module" src="./assets/js/wishlist.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" 
+    <script type="module" src="./assets/js/filters.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" 
         integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" 
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
