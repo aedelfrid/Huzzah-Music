@@ -1,7 +1,12 @@
 body {
     background-color: rgb(202, 175, 147);
   }
-  
+
+  #home {
+    color: maroon;
+    margin-left: 40px;
+  }
+
 .btn me-5 {
 padding-right: 5px;
 }
@@ -11,10 +16,38 @@ padding-right: 5px;
     width: 100%;
 }
 
+.advSearch {
+  
+}
+.advancedSearch {
+  margin-left: 25%;
+  width: 50%;
+}
+
+.advSearchBtn {
+  margin-left: 25%;
+}
+
+.form-control {
+  width: 50%;
+  margin-right: 100px;
+}
 .card-container {
     position: relative;
     margin-left: 100px; /* Adjust the margin-left value as needed */
   }
+
+
+.searchBtn {
+  box-shadow: 0 7px 14px 0 rgba(rgb(170, 75, 170), rgb(239, 93, 203), rgb(118, 106, 196)), 0 9px 18px 0 rgba(rgb(170, 75, 170), rgb(239, 93, 203), rgb(118, 106, 196));
+}
+
+.searchBtn:hover {
+  box-shadow: 0 7px 14px 0 rgba(rgb(235, 191, 235), rgb(237, 178, 222), rgb(165, 154, 235)), 0 9px 18px 0 rgba(rgb(235, 191, 235), rgb(237, 178, 222), rgb(165, 154, 235));
+  background-color: blueviolet;
+}
+
+=======
   
  
 section {
@@ -78,3 +111,4 @@ a {
   text-decoration: none;
  
 }
+

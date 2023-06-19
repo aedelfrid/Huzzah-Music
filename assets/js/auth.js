@@ -1,6 +1,8 @@
 var accessToken;
+
 import {spotifyClientID} from './key.js'
 import {spotifySecret} from './key.js'
+
 
 async function authorization(data = {}) {
     data = await fetch('https://accounts.spotify.com/api/token',{
@@ -17,10 +19,13 @@ async function authorization(data = {}) {
         console.log(accessToken);
         return accessToken;
 };
+var accessToken = authorization();
+
 
 (function callEveryHour() {
-    setInterval(accessToken = authorization(), 1000 * 60 * 60);
-}())
+    setInterval(authorization(), 1000 * 60 * 60);
+})();
+//do we include the () of authomatic running? I get a double access-token fetching
 
 export {accessToken};
 

@@ -4,69 +4,47 @@ import { accessToken } from "./auth.js";
 var token = await accessToken;
 
 var pageNum = 0;
-var searchQuery = document.querySelector("#formSearch")
-//var types = 'track' + '%2c' + 'artist' ;
+var searchQuery = document.querySelector("#formSearch");
 var resultLimit = '50';
 var offset = resultLimit*pageNum;
-
-
-
-//search functionality draft
-// var searchBtn = document.querySelector(".searchBtn");
-
-// searchBtn.addEventListener("click", function() {
-//     var searchInput = document.querySelector("#formSearch");
-//     var searchTerms = searchInput.value;
-// if (searchTerms === '') {
-
-// } else {
-//     searchGet(token);
-//     var searchTerms = searchInput.value;
-    
-//     async function searchGet(data = {}) {
-
-//         var result = await fetch(`https://api.spotify.com/v1/search?q=${searchTerms}&type=track,artist,album`,{
-//             method:'GET',
-//             headers:{ 'Authorization' : `Bearer ${token}`
-//             }});
-
-//         var data = await result.json()
-//         console.log(data);
-        
-// }}
-// });
-
-// advanced search input fields and activation button
-
-var queryForm = document.querySelector("#queries");
 
 var searchTrack = document.querySelector("#searchTrack");
 var searchArtist = document.querySelector("#searchArtist");
 var searchAlbum = document.querySelector("#searchAlbum");
 
-var advSearchBtn = document.querySelector(".advSearchBtn");
+var searchTrackBtn = document.querySelector("#searchTrackBtn");
+var searchArtistBtn = document.querySelector("#searchArtistBtn");
+var searchAlbumBtn = document.querySelector("#searchAlbumBtn");
+
+//on focus, clear text fields for next search
+
+function clearText(event) {
+    searchTrack.value = '';
+    searchArtist.value = '';
+    searchAlbum.value = '';
+}
 
 //when search button is clicked, input text is searched according to type (track, artist, album)
-advSearchBtn.addEventListener("click", function() {
+searchTrackBtn.addEventListener("click", function() {
     var trackName = searchTrack.value;
-    var artistName = searchArtist.value;
-    var albumName = searchAlbum.value;
 
     if (trackName === '') {
 
     } else {
 
         trackGet(token);
+      
         var trackName = searchTrack.value;
 
         async function trackGet(data = {}) {
 
         var result = await fetch(`https://api.spotify.com/v1/search?q=${trackName}&type=track`,{
             method:'GET',
+
             headers:{ 'Authorization' : `Bearer ${token}`
             }});
 
-        var data = await result.json()
+        var data = await result.json();
         console.log(data);
 
             for (var i = 0; i < data.tracks.items.length; i++) {
@@ -76,8 +54,7 @@ advSearchBtn.addEventListener("click", function() {
             var trackImg = data.tracks.items[i].album.images[0].url; //album image
             var trackArtist = data.tracks.items[i].artists[0].name; // track artist name
             var tracksName = data.tracks.items[i].name; //track name
-                
-                
+                    
             //link to spotify
             console.log(spotifyTrackLink);
            // name of album
@@ -90,7 +67,7 @@ advSearchBtn.addEventListener("click", function() {
             console.log(tracksName);
             
             var trackCardInfo = 
-            `<div class="card ml-5 m-4" style="max-width: 900px;">
+            `<div class="card ml-5 m-4" style="max-width: 500px; max-height: 300px; background-color: black; color:  rgb(165, 154, 235);">
             <div class="row g-0">
             <div class="col-md-4">
                 <img id="trackImage" src=${trackImg} class="img-fluid rounded-start" alt="album image provided for track">
@@ -104,30 +81,35 @@ advSearchBtn.addEventListener("click", function() {
                     <div class="col">
                 </div>
                 <div class="col">
-                    <button class="saveBtn btn me-5"><i class="fa fa-star fa" ></i></button>
+                    <button class="saveBtn btn mr-4 me-5"><i class="fa fa-star fa" ></i></button>
                 </div>
                 </div>
                 <p class="card-text">from ${trackAlbumName} by ${trackArtist}</p>
-                <button class="linkBtn btn-danger"><a href="${spotifyTrackLink}">Read More</a></button>
+                <button class="linkBtn btn-danger"><a href="${spotifyTrackLink}">Check out on Spotify</a></button>
                 </div>
             </div>
             </div>
         </div>`
             
             document.querySelector("#cardInfoInsert").insertAdjacentHTML('beforeend', trackCardInfo); 
-          
             }}};
+        });
+
+ searchArtistBtn.addEventListener("click", function(){
+    var artistName = searchArtist.value;
 
     if (artistName === '') {
 
     } else {
-
         artistGet(token);
+
         var artistName = searchArtist.value;
         async function artistGet(data = {}) {
             var result = await fetch(`https://api.spotify.com/v1/search?q=${artistName}&type=artist`,{
                 method:'GET',
+
                 headers:{ 'Authorization' : `Bearer ${token}`
+
                 }});
     
         var data = await result.json()
@@ -150,10 +132,10 @@ advSearchBtn.addEventListener("click", function() {
                
                 
                 var artistCardInfo = 
-                `<div class="card ml-5 m-4" style="max-width: 900px;">
+                `<div class="card ml-5 m-4" style="max-width: 500px; max-height: 300px">
                 <div class="row g-0">
                 <div class="col-md-4">
-                    <img id="trackImage" src=${artistImg} class="img-fluid rounded-start" alt="album image provided for artist">
+                    <img id="trackImage" src=${artistImg} class="img-fluid rounded-start" style="max-height: 200px" alt="album image provided for artist">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -164,11 +146,11 @@ advSearchBtn.addEventListener("click", function() {
                         <div class="col">
                     </div>
                     <div class="col">
-                        <button class="saveBtn btn me-5"><i class="fa fa-star fa" ></i></button>
+                        <button class="saveBtn btn mr-4 me-5"><i class="fa fa-star fa" ></i></button>
                     </div>
                     </div>
                     <p class="card-text">"Associated genres: ${artistGenres}</p>
-                    <button class="linkBtn btn-danger"><a href="${spotifyArtistLink}">Read More</a></button>
+                    <button class="linkBtn btn-danger"><a href="${spotifyArtistLink}">Check out on Spotify</a></button>
                     </div>
                 </div>
                 </div>
@@ -177,18 +159,25 @@ advSearchBtn.addEventListener("click", function() {
             document.querySelector("#cardInfoInsert").insertAdjacentHTML('beforeend', artistCardInfo);
                    
 }}};
+});
 
+searchAlbumBtn.addEventListener("click", function() {
+    var albumName = searchAlbum.value;
+    
     if (albumName === '') {
 
     } else {
 
         albumGet(token);
+
         var albumName = searchAlbum.value;
 
         async function albumGet(data = {}) {
             var result = await fetch(`https://api.spotify.com/v1/search?q=${albumName}&type=album`,{
                 method:'GET',
+
                 headers:{ 'Authorization' : `Bearer ${token}`
+
                 }});
             
                 var data = await result.json()
@@ -212,7 +201,7 @@ advSearchBtn.addEventListener("click", function() {
                    
                     
                     var albumCardInfo = 
-                    `<div class="card ml-5 m-4" style="max-width: 900px;">
+                    `<div class="card ml-5 m-4" style="max-width: 500px; max-height: 300px">
                     <div class="row g-0">
                     <div class="col-md-4">
                         <img id="trackImage" src=${albumImg} class="img-fluid rounded-start" alt="album image provided for track">
@@ -226,35 +215,32 @@ advSearchBtn.addEventListener("click", function() {
                             <div class="col">
                         </div>
                         <div class="col">
-                            <button class="saveBtn btn me-5"><i class="fa fa-star fa" ></i></button>
+                            <button class="saveBtn btn mr-4 me-5"><i class="fa fa-star fa" ></i></button>
                         </div>
                         </div>
                         <p class="card-text">by ${albumArtist}</p>
-                        <button class="linkBtn btn-danger"><a href="${spotifyAlbumLink}">Read More</a></button>
+                        <button class="linkBtn btn-danger"><a href="${spotifyAlbumLink}">Check out on Spotify</a></button>
                         </div>
                     </div>
                     </div>
                 </div>`
                     
                 document.querySelector("#cardInfoInsert").insertAdjacentHTML('beforeend', albumCardInfo);
-                
-            
-            };
+            }}};
+ });
 
-     }};
-
-//      var saveBtn = document.querySelector(".saveBtn");
+//To save selected track, artist, or album cards to a wishlist through local storage.
+// var saveBtn = document.querySelector(".saveBtn");
 
 //      saveBtn.addEventListener("click", function(event) {
 //          event.preventDefault();
          
-//        localStorage.setItem("trackCard", JSON.stringify(this.trackCardInfo));
-//        localStorage.setItem("artistCard", JSON.stringify(this.rtistCardInfo));
-//        localStorage.setItem("albumCard", JSON.stringify(this.albumCardInfo));
+//        event.parent.localStorage.setItem("trackCard", this.JSON.stringify(trackCardInfo));
+//        event.parent.localStorage.setItem("artistCard", JSON.stringify(this.artistCardInfo));
+//        event.parent.localStorage.setItem("albumCard", JSON.stringify(this.albumCardInfo));
 //      });
- });
 
-=======
+
 
 // private methods
 const _search = async (input) => {
@@ -295,8 +281,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // h1.textContent = "Spotify ";
     container.appendChild(h1);
    
-  
-
     var formGroup = document.createElement("div");
     formGroup.className = "form-group";
     formGroup.appendChild(label);
@@ -319,10 +303,8 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("results",data)
       displayResults(data)
 
-
     });
   
-   
   
     function displayResults(data) {
       resultsDiv.innerHTML = "";
@@ -333,18 +315,15 @@ document.addEventListener("DOMContentLoaded", function () {
       items.push(...data['albums'].items);
       items.push(...data['playlists'].items);
   
-      items.forEach(function (item) {
-       
-       
+      items.forEach(function (item) { 
    
         var cardFirstDiv = document.createElement("div");
         cardFirstDiv.className = "row g-0";
         var cardSecondDivForImage = document.createElement("div");
         cardSecondDivForImage.className = "col-md-4";
         cardFirstDiv.appendChild(cardSecondDivForImage)
+
         
-                                   
-  
         var image = document.createElement("img");
         // image.src = item.images[0]?.url || "placeholder.jpg";
         // image.src = item.images ? item.images[0].url : item.album.images[0].url || "placeholder.jpg";
@@ -376,7 +355,6 @@ document.addEventListener("DOMContentLoaded", function () {
         cardBodyCol.className = "col";
         cardBody.appendChild(cardBodyCol)
       
-  
         var title = document.createElement("h5");
         title.className = "card-title";
         title.textContent = item.name;
@@ -406,3 +384,4 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
+

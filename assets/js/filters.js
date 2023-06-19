@@ -2,18 +2,8 @@ var categories;
 
 import {accessToken} from './auth.js';
 
-var token = await accessToken
-
-//console.log(token)
-
-
-//var searchResults;
-
-//var pageNum = 0;
-//var searchQuery = 'Electrelane';
-//var types = 'track' + '%2c' + 'artist' ;
-//var resultLimit = '50';
-//var offset = resultLimit*pageNum;
+var token = await accessToken;
+console.log(token);
 
 async function categoryGet(data={}) {
     var result = await fetch('https://api.spotify.com/v1/browse/categories', {
@@ -21,6 +11,7 @@ async function categoryGet(data={}) {
         headers:{ 'Authorization' : `Bearer ${token}`}
     });
     var data = await result.json()
+
     var categoryObj = data;
     return categoryObj
 };
@@ -28,6 +19,9 @@ async function categoryGet(data={}) {
 var categoryObj = await categoryGet();
 
 var categoryItemsObj = await categoryObj.categories.items
+
+//Do we remove this commented out section?
+
 /*async function searchTracks(accessToken, data = {}) {
     const result = await fetch(`https://api.spotify.com/v1/search?q=${searchQuery}&type=track&limit=${resultLimit}&offset=${offset}`,{
         method:'GET',
@@ -43,6 +37,9 @@ var categoryItemsObj = await categoryObj.categories.items
         console.log(searchResults[i].name)
     }
 };*/
+
+//Unsure if necessary, was in older version
+//var categoryCollapse = document.querySelector('#categoryButton')
 
 var categoryCollapseContent = document.querySelector('.categoryCollapse')
 
@@ -70,5 +67,4 @@ $('#categoryA').on('click', () => {
     }
 
 });
-
 
