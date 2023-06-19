@@ -1,15 +1,6 @@
 var accessToken;
-// import {spotifyClientID} from './key.js'
-// import {spotifySecret} from './key.js'
-
-var searchResults;
-
-var pageNum = 0;
-var searchQuery = document.querySelector("#formSearch")
-//var types = 'track' + '%2c' + 'artist' ;
-var resultLimit = '50';
-var offset = resultLimit*pageNum;
-
+import {spotifyClientID} from './key.js'
+import {spotifySecret} from './key.js'
 
 async function authorization(data = {}) {
     data = await fetch('https://accounts.spotify.com/api/token',{
@@ -26,11 +17,9 @@ async function authorization(data = {}) {
         console.log(accessToken);
         return accessToken;
 };
-var accessToken = authorization();
-
 
 (function callEveryHour() {
-    setInterval(authorization(), 1000 * 60 * 60);
+    setInterval(accessToken = authorization(), 1000 * 60 * 60);
 }())
 
 export {accessToken};

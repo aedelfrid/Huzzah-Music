@@ -1,9 +1,6 @@
-var accessToken;
-import {spotifyClientID} from './key.js'
-import {spotifySecret} from './key.js'
+import { accessToken } from "./auth.js";
 
-
-var searchResults;
+var token = await accessToken;
 
 var pageNum = 0;
 var searchQuery = document.querySelector("#formSearch")
@@ -12,20 +9,6 @@ var resultLimit = '50';
 var offset = resultLimit*pageNum;
 
 
-async function authorization(data = {}) {
-    const result = await fetch('https://accounts.spotify.com/api/token',{
-        method:'POST',
-        headers:{ 
-            'Content-Type' : 'application/x-www-form-urlencoded',
-            'Authorization' : 'Basic ' + btoa(spotifyClientID + ':' + spotifySecret),
-    },
-    body: 'grant_type=client_credentials'
-});
-    
-    var data = await result.json();
-    accessToken = data.access_token;
-
-}; //end of authorization function - should now have access to token
 
 //search functionality draft
 // var searchBtn = document.querySelector(".searchBtn");
@@ -36,14 +19,14 @@ async function authorization(data = {}) {
 // if (searchTerms === '') {
 
 // } else {
-//     searchGet(accessToken);
+//     searchGet(token);
 //     var searchTerms = searchInput.value;
     
 //     async function searchGet(data = {}) {
 
 //         var result = await fetch(`https://api.spotify.com/v1/search?q=${searchTerms}&type=track,artist,album`,{
 //             method:'GET',
-//             headers:{ 'Authorization' : `Bearer ${accessToken}`
+//             headers:{ 'Authorization' : `Bearer ${token}`
 //             }});
 
 //         var data = await result.json()
@@ -72,14 +55,14 @@ advSearchBtn.addEventListener("click", function() {
 
     } else {
 
-        trackGet(accessToken);
+        trackGet(token);
         var trackName = searchTrack.value;
 
         async function trackGet(data = {}) {
 
         var result = await fetch(`https://api.spotify.com/v1/search?q=${trackName}&type=track`,{
             method:'GET',
-            headers:{ 'Authorization' : `Bearer ${accessToken}`
+            headers:{ 'Authorization' : `Bearer ${token}`
             }});
 
         var data = await result.json()
@@ -138,12 +121,12 @@ advSearchBtn.addEventListener("click", function() {
 
     } else {
 
-        artistGet(accessToken);
+        artistGet(token);
         var artistName = searchArtist.value;
         async function artistGet(data = {}) {
             var result = await fetch(`https://api.spotify.com/v1/search?q=${artistName}&type=artist`,{
                 method:'GET',
-                headers:{ 'Authorization' : `Bearer ${accessToken}`
+                headers:{ 'Authorization' : `Bearer ${token}`
                 }});
     
         var data = await result.json()
@@ -198,13 +181,13 @@ advSearchBtn.addEventListener("click", function() {
 
     } else {
 
-        albumGet(accessToken);
+        albumGet(token);
         var albumName = searchAlbum.value;
 
         async function albumGet(data = {}) {
             var result = await fetch(`https://api.spotify.com/v1/search?q=${albumName}&type=album`,{
                 method:'GET',
-                headers:{ 'Authorization' : `Bearer ${accessToken}`
+                headers:{ 'Authorization' : `Bearer ${token}`
                 }});
             
                 var data = await result.json()
@@ -269,10 +252,4 @@ advSearchBtn.addEventListener("click", function() {
 //        localStorage.setItem("albumCard", JSON.stringify(this.albumCardInfo));
 //      });
  });
-
-
-
-(function callEveryHour() {
-    setInterval(authorization(), 1000 * 60 * 60);
-}());
 
